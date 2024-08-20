@@ -3,16 +3,11 @@ const app = express()
 const mongoose = require('mongoose')
 const Product = require('./models/productModel')
 
+const port = process.env.PORT || 4000;
+
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
 
-/*app.get('/', (req,res)=>{
-    res.send('Hello Node Api')
-})
-
-app.get('/blog', (req,res)=>{
-    res.send('Hello blog I am Kelly')
-}),*/
 
 //fetching all products
 app.get('/products', async(req,res)=>{
@@ -80,7 +75,7 @@ app.put('/products/:id', async(req,res)=>{
  })
 
 
-mongoose.connect('mongodb+srv://cictech_electronics:qwerty111@cictechapi.fsyh2.mongodb.net/Product-API?retryWrites=true&w=majority&appName=cictechApi')
+/*mongoose.connect('mongodb+srv://cictech_electronics:qwerty111@cictechapi.fsyh2.mongodb.net/Product-API?retryWrites=true&w=majority&appName=cictechApi')
 .then(()=>{
     console.log('Connected to MongoDB')
     app.listen(3000, ()=>{
@@ -88,5 +83,16 @@ mongoose.connect('mongodb+srv://cictech_electronics:qwerty111@cictechapi.fsyh2.m
     });
 }).catch((error)=>{
     console.log(error)
+})*/
+
+mongoose.connect('mongodb+srv://cictech_electronics:qwerty111@cictechapi.fsyh2.mongodb.net/Product-API?retryWrites=true&w=majority&appName=cictechApi')
+.then(()=>{
+    console.log('Connected to MongoDB')
+    app.listen(port, ()=>{
+        console.log('Server is running on port 3000')
+    });
+}).catch((error)=>{
+    console.log(error)
 })
+
 
