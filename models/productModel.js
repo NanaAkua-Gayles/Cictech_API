@@ -8,7 +8,7 @@ const productSchema = mongoose.Schema(
         },
         brand:{
             type: String,
-            required: (true)
+            required: (false, "Please enter a product name")
         },
         image:{
             type:String,
