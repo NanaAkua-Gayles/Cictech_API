@@ -74,6 +74,17 @@ app.put('/products/:id', async(req,res)=>{
     }
  })
 
+ //deleting all
+ app.delete('/products', async(req,res)=>{
+    try {
+        const products = await Product.delete({})
+        res.status(200).json(products)
+    } catch (error) {
+        res.status(500).json({message: error.message})
+    }
+}),
+
+
 
 /*mongoose.connect('mongodb+srv://cictech_electronics:qwerty111@cictechapi.fsyh2.mongodb.net/Product-API?retryWrites=true&w=majority&appName=cictechApi')
 .then(()=>{
