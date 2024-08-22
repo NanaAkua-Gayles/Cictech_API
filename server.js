@@ -4,6 +4,14 @@ const mongoose = require('mongoose')
 const multer = require('multer');
 const Product = require('./models/productModel')
 
+const fs = require('fs');
+const path = require('path');
+
+const uploadsDir = path.join(__dirname, 'uploads');
+
+if (!fs.existsSync(uploadsDir)) {
+    fs.mkdirSync(uploadsDir);
+}
 
 // Set up multer for file uploads
 const storage = multer.diskStorage({
@@ -21,7 +29,7 @@ const port = process.env.PORT || 18012;
 
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
-app.use('C:/Users/Kelly/Desktop/uploads', express.static('uploads')); // Serve the uploaded files statically
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 
 
