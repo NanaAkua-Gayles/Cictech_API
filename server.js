@@ -24,11 +24,24 @@ app.get('/products/:id', async(req,res)=>{
     try {
         const {id} = req.params;
         const product = await Product.findById(id)
+        
         res.status(200).json(product)
     } catch (error) {
         res.status(500).json({message: error.message})
     }
 }),
+
+//fetching by brand
+app.get('/products/:brand', async(req,res)=>{
+    try {
+        const {brand} = req.params;
+        const product = await Product.findById(brand)
+        res.status(200).json(product)
+    } catch (error) {
+        res.status(500).json({message: error.message})
+    }
+}),
+
 
 //saving products
 app.post('/products', async(req,res)=>{
