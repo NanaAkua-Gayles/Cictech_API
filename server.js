@@ -5,7 +5,6 @@ const multer = require('multer');
 const Product = require('./models/productModel')
 
 
-
 // Set up multer for file uploads
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -22,7 +21,7 @@ const port = process.env.PORT || 18012;
 
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
-app.use('/uploads', express.static('uploads')); // Serve the uploaded files statically
+app.use('C:/Users/Kelly/Desktop/uploads', express.static('uploads')); // Serve the uploaded files statically
 
 
 
