@@ -24,7 +24,6 @@ app.get('/products/:id', async(req,res)=>{
     try {
         const {id} = req.params;
         const product = await Product.findById(id)
-        
         res.status(200).json(product)
     } catch (error) {
         res.status(500).json({message: error.message})
@@ -32,10 +31,10 @@ app.get('/products/:id', async(req,res)=>{
 }),
 
 //fetching by brand
-app.get('/products/:brand', async(req,res)=>{
+app.get('/products/brand/:brand', async(req,res)=>{
     try {
         const {brand} = req.params;
-        const product = await Product.findById(brand)
+        const product = await Product.find({brand: brand})
         res.status(200).json(product)
     } catch (error) {
         res.status(500).json({message: error.message})
