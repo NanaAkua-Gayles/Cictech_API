@@ -6,6 +6,8 @@ const Product = require('./models/productModel')
 
 const fs = require('fs');
 const path = require('path');
+const cors = require('cors');
+
 
 const uploadsDir = path.join(__dirname, 'uploads');
 
@@ -30,6 +32,7 @@ const port = process.env.PORT || 18012;
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use(cors());
 
 
 
